@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { AlertCircle, Mail, Trash2, Search, MessageSquare } from "lucide-react"
+import { AlertCircle, Mail, Trash2, Search, MessageSquare, ArrowLeft } from "lucide-react"
 
 interface Message {
   id: string
@@ -23,13 +23,16 @@ export default function AdminMessagesPage() {
   const [error, setError] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
-    const adminSession = document.cookie.includes("admin_session=true")
+    const adminSession = document.cookie.includes("admin_access=granted")
     if (!adminSession) {
       router.push("/admin/login")
+      return
     }
+    setIsAuthenticated(true)
     fetchMessages()
   }, [router])
 
@@ -76,13 +79,19 @@ export default function AdminMessagesPage() {
       msg.subject.toLowerCase().includes(searchTerm.toLowerCase()),
   )
 
-  if (!document.cookie.includes("admin_session=true")) {
+  if (!isAuthenticated) {
     return null
   }
 
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link href="/admin/dashboard">
+          <Button variant="outline" size="sm" className="mb-4 gap-2 bg-transparent">
+            <ArrowLeft size={16} /> Back to Dashboard
+          </Button>
+        </Link>
+
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground">Messages</h1>
@@ -162,12 +171,6 @@ export default function AdminMessagesPage() {
           )}
         </div>
 
-        {/* Back Link */}
-        <div className="mt-8">
-          <Link href="/admin/dashboard">
-            <Button variant="outline">← Back to Dashboard</Button>
-          </Link>
-        </div>
       </div>
     </div>
   )

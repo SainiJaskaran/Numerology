@@ -14,7 +14,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     // Check if admin session exists
-    const sessionCookie = document.cookie.split("; ").find((row) => row.startsWith("admin_session="))
+    const sessionCookie = document.cookie.split("; ").find((row) => row.startsWith("admin_access="))
 
     if (!sessionCookie) {
       router.push("/admin/login")
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
 
   function handleLogout() {
     // Clear session cookie
-    document.cookie = "admin_session=; path=/; max-age=0"
+    document.cookie = "admin_access=; path=/; max-age=0"
     router.push("/admin/login")
   }
 

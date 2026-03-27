@@ -28,6 +28,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (!supabaseUrl || !supabaseServiceKey) {
+      return Response.json({ error: "Database configuration missing" }, { status: 500 })
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey)
     const body = await request.json()
 
     const { data, error } = await supabase

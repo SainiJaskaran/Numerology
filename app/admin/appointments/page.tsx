@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Calendar, Clock, Phone, Mail, User, Trash2 } from "lucide-react"
+import { Calendar, Clock, Phone, Mail, User, Trash2, ArrowLeft } from "lucide-react"
+import Link from "next/link"
 
 interface Appointment {
   id: string
@@ -27,7 +28,7 @@ export default function AdminAppointmentsPage() {
 
   useEffect(() => {
     // Check if admin session exists
-    const sessionCookie = document.cookie.split("; ").find((row) => row.startsWith("admin_session="))
+    const sessionCookie = document.cookie.split("; ").find((row) => row.startsWith("admin_access="))
 
     if (!sessionCookie) {
       router.push("/admin/login")
@@ -96,6 +97,11 @@ export default function AdminAppointmentsPage() {
       {/* Header */}
       <header className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <Link href="/admin/dashboard">
+            <Button variant="outline" size="sm" className="mb-4 gap-2 bg-transparent">
+              <ArrowLeft size={16} /> Back to Dashboard
+            </Button>
+          </Link>
           <h1 className="text-3xl font-bold text-slate-900">Appointments</h1>
           <p className="text-slate-600 mt-1">Manage all consultation bookings</p>
         </div>

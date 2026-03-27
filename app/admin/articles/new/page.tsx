@@ -8,7 +8,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { AlertCircle, CheckCircle, Upload } from "lucide-react"
+import { AlertCircle, CheckCircle, Upload, ArrowLeft } from "lucide-react"
 import { uploadArticleImage } from "@/lib/supabase/storage"
 
 export default function NewArticlePage() {
@@ -27,13 +27,16 @@ export default function NewArticlePage() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
   const [imagePreview, setImagePreview] = useState<string>("")
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
-    const adminSession = document.cookie.includes("admin_session=true")
+    const adminSession = document.cookie.includes("admin_access=granted")
     if (!adminSession) {
       router.push("/admin/login")
+      return
     }
+    setIsAuthenticated(true)
   }, [router])
 
   const generateSlug = (title: string) => {
@@ -105,13 +108,18 @@ export default function NewArticlePage() {
     }
   }
 
-  if (!document.cookie.includes("admin_session=true")) {
+  if (!isAuthenticated) {
     return null
   }
 
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link href="/admin/articles">
+          <Button variant="outline" size="sm" className="mb-4 gap-2 bg-transparent">
+            <ArrowLeft size={16} /> Back to Articles
+          </Button>
+        </Link>
         <h1 className="text-4xl font-bold text-foreground mb-8">Create New Article</h1>
 
         {error && (

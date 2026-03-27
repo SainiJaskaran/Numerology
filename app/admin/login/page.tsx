@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
-import { AlertCircle, CheckCircle } from "lucide-react"
+import { AlertCircle, CheckCircle, Home } from "lucide-react"
+import Link from "next/link"
 
 export default function AdminLoginPage() {
   const [username, setUsername] = useState("")
@@ -27,7 +28,7 @@ export default function AdminLoginPage() {
     // Check credentials
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       // Set cookie for session
-      document.cookie = `admin_session=true; path=/; max-age=86400` // 24 hours
+      document.cookie = `admin_access=granted; path=/; max-age=86400` // 24 hours
       setSuccess(true)
       setTimeout(() => {
         router.push("/admin/dashboard")
@@ -40,6 +41,11 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 pt-20">
       <div className="w-full max-w-md">
+        <Link href="/">
+          <Button variant="outline" size="sm" className="mb-4 gap-2 bg-transparent">
+            <Home size={16} /> Back to Website
+          </Button>
+        </Link>
         <Card className="p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-2">Admin Login</h1>
@@ -88,15 +94,6 @@ export default function AdminLoginPage() {
             </Button>
           </form>
 
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-blue-700 font-medium mb-2">Demo Credentials:</p>
-            <p className="text-sm text-blue-600">
-              Username: <code className="font-mono">admin</code>
-            </p>
-            <p className="text-sm text-blue-600">
-              Password: <code className="font-mono">numerology123</code>
-            </p>
-          </div>
         </Card>
       </div>
     </div>

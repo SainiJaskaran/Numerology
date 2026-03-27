@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   }
 }
 
-// GET endpoint to fetch appointments for admin
+// GET endpoint to fetch appointments (optionally filtered by date)
 export async function GET(request: Request) {
   try {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -66,10 +66,19 @@ export async function GET(request: Request) {
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
-    const { data, error } = await supabase
+    const { searchParams } = new URL(request.url)
+    const date = searchParams.get("date")
+
+    let query = supabase
       .from("appointments")
       .select("*")
       .order("consultation_date", { ascending: true })
+
+    if (date) {
+      query = query.eq("consultation_date", date)
+    }
+
+    const { data, error } = await query
 
     if (error) {
       console.error("[v0] Error fetching appointments:", error)
