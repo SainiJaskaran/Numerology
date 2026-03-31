@@ -10,13 +10,13 @@ import { useScrollReveal } from "@/hooks/useScrollReveal"
 const credentials = [
   { icon: Award, number: "15+", label: "Years of Practice" },
   { icon: Users, number: "500+", label: "Clients Served" },
-  { icon: Heart, number: "98%", label: "Satisfaction Rate" },
-  { icon: Sparkles, number: "Certified", label: "Master Numerologist" },
+  // { icon: Heart, number: "98%", label: "Satisfaction Rate" },
+  // { icon: Sparkles, number: "Certified", label: "Master Numerologist" },
 ]
 
 const journey = [
-  { title: "Early Fascination", desc: "From childhood, I was drawn to the mysterious ways numbers appeared in nature and human affairs. This curiosity led me to study numerology formally." },
-  { title: "Professional Training", desc: "I studied under master numerologists and spiritual teachers, earning my certification and deepening my understanding of this ancient practice." },
+  { title: "Early Fascination", desc: "From childhood, I was drawn to occult. My journey started with Reiki and has not stopped till now. At a phase in my life, I got very mesmerized by the mysterious ways numbers appeared in nature and human affairs. This curiosity led me to study numerology formally." },
+  { title: "Professional Training", desc: "I have studied many forms of Numerology – Chaldean, Chinese and Pythagorean. I earned my certification and deepened my understanding of this ancient practice." },
   { title: "Helping Others", desc: "For over a decade, I've dedicated myself to helping clients find clarity, purpose, and spiritual alignment through personalized consultations." },
   { title: "Continued Growth", desc: "I continue to study and evolve my practice, integrating new insights while honoring the timeless wisdom of numerology." },
 ]
@@ -40,10 +40,10 @@ export default function AboutPage() {
                   A decade of guiding lives through <span className="text-gradient">numbers</span>.
                 </h1>
                 <p className="text-[17px] text-[#777] leading-relaxed mb-6">
-                  I&apos;m a seasoned Numerologist and Tarot Reader with over a decade of experience guiding individuals toward clarity, purpose, and balance.
+                  I&apos;m a seasoned Numerologist and Tarot Reader with over a decade of experience guiding individuals toward clarity, purpose, and balance. My approach blends ancient wisdom with practical insight, helping people understand their life path, unlocking their potential, and align their energies with their true goals. I have studied many forms of Numerology - Chaldean, Chinese and Pythagorean.
                 </p>
                 <p className="text-[17px] text-[#777] leading-relaxed">
-                  Beyond the spiritual realm, I believe that mind, body, and soul work best in harmony — and I bring that philosophy into every reading.
+                  When I&apos;m not decoding numbers or reading cards, I&apos;m either driving IT sales or lifting weights at the gym.
                 </p>
               </div>
               <div className="reveal-right">
@@ -99,7 +99,7 @@ export default function AboutPage() {
               <h2 className="text-4xl md:text-[2.8rem] font-bold text-white">Experience & Expertise</h2>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-2 gap-6">
               {credentials.map((item, i) => (
                 <div key={i} className={`reveal-scale delay-${i + 1} text-center py-10 px-6 rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.06] transition-all duration-400`}>
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#b48c3c] to-[#8a6b25] flex items-center justify-center mx-auto mb-5 shadow-lg">
