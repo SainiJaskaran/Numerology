@@ -8,7 +8,7 @@ import { ArrowRight, Award, Users, Heart, Sparkles } from "lucide-react"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 
 const credentials = [
-  { icon: Award, number: "15+", label: "Years of Practice" },
+  { icon: Award, number: "10+", label: "Years of Practice" },
   { icon: Users, number: "500+", label: "Clients Served" },
   // { icon: Heart, number: "98%", label: "Satisfaction Rate" },
   // { icon: Sparkles, number: "Certified", label: "Master Numerologist" },

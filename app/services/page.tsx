@@ -6,18 +6,17 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Star, ArrowRight, Clock, ChevronDown, ChevronUp } from "lucide-react"
+import { Star, ArrowRight, ChevronDown, ChevronUp } from "lucide-react"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 
 const services = [
-  { id: 1, title: "Complete Numerology Chart", price: "Custom", duration: "Comprehensive", description: "A detailed core numerology analysis covering Fate, Life Path, Soul Urge, and Personality numbers with a comprehensive written report.", features: ["Core numerology analysis", "Name and signature analysis", "Career and money guidance", "Relationship and family analysis", "Health and energy indicators", "Ethical remedies and balancing tools", "Written report and consultation"] },
-  { id: 2, title: "Name Numerology", price: "Custom", duration: "45 min", description: "Align your external identity with your inner life purpose through energetic name analysis.", features: ["Name vibration analysis", "Impact on opportunities", "Spelling corrections", "Letter adjustments", "Signature energy alignment", "Energetic alignment guidance"] },
-  { id: 3, title: "Car Numerology", price: "Custom", duration: "30 min", description: "Understand how your vehicle's registration energy aligns with your life path.", features: ["Registration number analysis", "Vehicle energy assessment", "Safety alignment", "Number modification options", "Personal numerology matching", "Energetic alignment tool"] },
-  { id: 4, title: "Mobile Numerology", price: "Custom", duration: "30 min", description: "Analyse how your mobile number's vibration influences communication, relationships, and finances.", features: ["Mobile number analysis", "Communication impact", "Professional visibility", "Financial patterns", "Number optimization", "Personal energy alignment"] },
-  { id: 5, title: "Business Numerology", price: "Custom", duration: "60 min", description: "Ensure your business name and launch dates align with your purpose for consistent growth.", features: ["Business name analysis", "Registration details review", "Launch date recommendations", "Growth potential assessment", "Branding alignment", "Cash-flow optimization"] },
-  { id: 6, title: "Career Numerology", price: "Custom", duration: "60 min", description: "Identify careers energetically aligned with your life path and strengths.", features: ["Career path analysis", "Talent identification", "Work environment guidance", "Job selection clarity", "Career change timing", "Professional growth insights"] },
-  { id: 7, title: "Marriage/Relationship Numerology", price: "Custom", duration: "75 min", description: "Understand emotional compatibility, communication styles, and long-term harmony.", features: ["Compatibility analysis", "Communication patterns", "Emotional needs assessment", "Relationship dynamics", "Marriage timing guidance", "Harmony improvement strategies"] },
-  { id: 8, title: "Tarot Reading", price: "Custom", duration: "45 min", description: "Intuitive guidance using tarot for insight into current situations and possible outcomes.", features: ["Intuitive card guidance", "Situation clarity", "Underlying influences", "Future possibilities", "Decision support", "Self-awareness increase"] },
+  { id: 1, title: "Complete Numerology Chart", includedTitle: "Your Personalized Numerology Experience Includes:", description: "A comprehensive numerology chart that decodes your core numbers — Date of Birth, Life Path, Soul Number, and Name Number — while also mapping your Pinnacles, Challenges, and Time Cycles to guide your journey.", features: ["A detailed decoding of your core numbers — revealing your strengths, patterns, and life direction", "Clear guidance for career, business, and financial decisions", "Deep insight into relationships and emotional alignment", "Awareness of health tendencies and energetic balance", "Identification of karmic debts and how to work through them", "Practical remedies to enhance and harmonize your numbers", "A comprehensive written report plus a personalized consultation for clarity and direction"] },
+  { id: 2, title: "Name Numerology", includedTitle: "What's Included", description: "Align your name with your life purpose to create clarity, flow, and alignment in your journey. ", features: ["In-Depth Name Analysis", "Alignment with Your Core Numbers", "Strengths and Hidden Blocks", "Personalized Name Corrections", "Remedies and Activation"] },
+  { id: 3, title: "Car Numerology", includedTitle: "What's Included", description: "A detailed analysis of your vehicle number and its alignment with your Core Numbers, offering insights into safety, ease, financial flow, and remedies for better alignment.", features: ["Vehicle Number Analysis - whether it brings ease, protection, or challenges", "Compatibility with Owner's Numbers", "Ideal Vehicle Number Suggestions (Pre-Purchase)", "Practical remedies if the current number is not aligned"] },
+  { id: 4, title: "Mobile Numerology", includedTitle: "What's Included", description: "A personalized analysis of your mobile number and its alignment with your energy, influencing communication, opportunities, and overall life flow.", features: ["Mobile Number Analysis", "Compatibility with Your Core Numbers", "Impact on Key Areas of Life", "Recommendations for choosing a more aligned number (if needed)"] },
+  { id: 5, title: "Career Numerology", includedTitle: "What's Included", description: "See how your numbers shape your professional strengths, ideal career paths, work style, and success patterns.", features: ["Core Number Analysis for Career", "Ideal Career Paths and Industries", "Work Style and Strengths", "Patterns Causing Stagnation, Job Dissatisfaction, or Instability ", "Misalignment Between Effort and Results", "Financial and Growth Potential","Timing and Career Cycles"] },
+  { id: 6, title: "Marriage/Relationship Numerology", includedTitle: "What's Included", description: "Understand how two individual's core numbers interact to determine compatibility, emotional connection, communication patterns, and long-term harmony.", features: ["Matching of core numbers (Life Path, Soul, Name Number) ", "Overall harmony between partners ", "Natural ease vs areas of friction ", "Emotional & Communication Dynamics", "Strengths of the Relationship", "Challenges & Conflict Patterns","Long-Term Compatibility","Favorable periods for: Marriage/ Engagement"] },
+  { id: 7, title: "Tarot Reading", includedTitle: "What's Included", description: "Gain clarity and direction through intuitive tarot guidance for your current situation and potential outcomes.", features: ["Deeper look into the issue or question you're facing ", "What's really happening beneath the surface", "Things you may not be seeing clearly", "Multiple possibilities (not fixed predictions, but guidance-based outcomes)", "Clear, intuitive direction on what actions to take ", "What to embrace, avoid, or shift"] },
 ]
 
 const testimonials = [
@@ -71,7 +70,9 @@ function ServicesContent() {
                 Services tailored to your <span className="text-gradient-animate">journey</span>.
               </h1>
               <p className="text-[17px] text-white/45 leading-relaxed">
-                Each consultation is designed to provide clarity, direction, and alignment for your unique path.
+                Your journey is no accident — it&apos;s written in numbers. It can be revealed through the cards.<br></br>
+                Through personalized services tailored to your unique path, each consultation is designed to bring clarity, direction, and alignment to your journey.
+
               </p>
             </div>
           </div>
@@ -86,13 +87,8 @@ function ServicesContent() {
                   <div className="py-7 cursor-pointer group" onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}>
                     <div className="flex items-start md:items-center justify-between gap-6">
                       <div className="flex-1">
-                        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5 mb-2">
+                        <div className="mb-2">
                           <h3 className="text-lg font-bold text-[#1a1a1a] group-hover:text-[#b48c3c] transition-colors duration-300">{service.title}</h3>
-                          <div className="flex items-center gap-3 text-xs text-[#bbb]">
-                            <span className="font-medium text-[#b48c3c]">{service.price}</span>
-                            <span className="w-1 h-1 rounded-full bg-[#ddd]" />
-                            <span className="flex items-center gap-1"><Clock size={11} />{service.duration}</span>
-                          </div>
                         </div>
                         <p className="text-sm text-[#999] leading-relaxed max-w-2xl">{service.description}</p>
                       </div>
@@ -106,7 +102,7 @@ function ServicesContent() {
                     <div className={`overflow-hidden transition-all duration-500 ${selectedService === service.id ? "max-h-[500px] opacity-100 mt-6" : "max-h-0 opacity-0"}`}>
                       <div className="bg-[#faf8f4] rounded-xl p-7 flex flex-col md:flex-row gap-8">
                         <div className="flex-1">
-                          <h4 className="text-[11px] font-semibold text-[#b48c3c] uppercase tracking-wider mb-4">What&apos;s Included</h4>
+                          <h4 className="text-[11px] font-semibold text-[#b48c3c] uppercase tracking-wider mb-4">{service.includedTitle}</h4>
                           <ul className="space-y-2.5">
                             {service.features.map((f, idx) => (
                               <li key={idx} className="flex items-center gap-3 text-sm text-[#666]">

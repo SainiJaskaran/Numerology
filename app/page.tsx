@@ -6,16 +6,16 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
-import { ArrowRight, Sparkles, Star, TrendingUp, Hash, Layers, Briefcase } from "lucide-react"
+import { ArrowRight, Sparkles, Star, TrendingUp, Hash, Layers, Briefcase, Car, Smartphone, Heart } from "lucide-react"
 import { OrbitingNumbers } from "@/components/orbiting-numbers"
 
 const services = [
-  { icon: Hash, title: "Life Path Number", desc: "Discover the core essence of who you are and your life's purpose.", serviceId: 1 },
-  { icon: Layers, title: "Core Numbers", desc: "Understand the three primary numbers that shape your personality.", serviceId: 1 },
-  { icon: Star, title: "Birth Day Number", desc: "Uncover your natural talents and inherent strengths.", serviceId: 1 },
-  { icon: TrendingUp, title: "Expression Number", desc: "Explore how you communicate and express yourself.", serviceId: 1 },
-  { icon: Sparkles, title: "Name Numerology", desc: "Discover the vibration and power hidden within your name.", serviceId: 2 },
-  { icon: Briefcase, title: "Annual Forecast", desc: "Receive personalized insights for the year ahead.", serviceId: 6 },
+  { icon: Layers, title: "Complete Numerology Chart", desc: "A comprehensive numerology chart that decodes your core numbers — Date of Birth, Life Path, Soul Number, and Name Number — while also mapping your Pinnacles, Challenges, and Time Cycles to guide your journey.", serviceId: 1 },
+  { icon: Sparkles, title: "Name Numerology", desc: "Align your name with your life purpose to create clarity, flow, and alignment in your journey. ", serviceId: 2 },
+  { icon: Car, title: "Car Numerology", desc: "A detailed analysis of your vehicle number and its alignment with your Core Numbers, offering insights into safety, ease, financial flow, and remedies for better alignment.", serviceId: 3 },
+  { icon: Smartphone, title: "Mobile Numerology", desc: "A personalized analysis of your mobile number and its alignment with your energy, influencing communication, opportunities, and overall life flow.", serviceId: 4 },
+  { icon: Briefcase, title: "Career Numerology", desc: "See how your numbers shape your professional strengths, ideal career paths, work style, and success patterns.", serviceId: 5 },
+  { icon: Heart, title: "Marriage/Relationship Numerology", desc: "Understand how two individual's core numbers interact to determine compatibility, emotional connection, communication patterns, and long-term harmony.", serviceId: 6 },
 ]
 
 export default function Home() {
@@ -51,7 +51,7 @@ export default function Home() {
                 </h1>
 
                 <p className="text-[17px] text-white/50 leading-relaxed max-w-lg">
-                  Every journey is shaped by subtle energies — the patterns written in numbers and the stories whispered by the cards. Step into deeper clarity.
+                  Every journey is guided by unseen energies — answers encoded in numbers and stories whispered through the cards. 
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -71,8 +71,7 @@ export default function Home() {
                 <div className="flex items-center gap-10 pt-10 border-t border-white/[0.06]">
                   {[
                     { num: "500+", label: "Clients Served" },
-                    { num: "15+", label: "Years Experience" },
-                    { num: "98%", label: "Satisfaction" },
+                    { num: "10+", label: "Years Experience" },
                   ].map((s, i) => (
                     <div key={i}>
                       <p className="text-2xl font-bold text-gradient">{s.num}</p>
